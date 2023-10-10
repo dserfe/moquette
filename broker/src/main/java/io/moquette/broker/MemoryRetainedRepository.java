@@ -22,15 +22,14 @@ import io.netty.handler.codec.mqtt.MqttPublishMessage;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.ConcurrentSkipListMap;
 
 /*
 * In memory retained messages store
 * */
 final class MemoryRetainedRepository implements IRetainedRepository {
 
-    private final ConcurrentMap<Topic, RetainedMessage> storage = new ConcurrentHashMap<>();
+    private final ConcurrentSkipListMap<Topic, RetainedMessage> storage = new ConcurrentSkipListMap<>();
 
     @Override
     public void cleanRetained(Topic topic) {
